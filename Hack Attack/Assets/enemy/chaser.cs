@@ -15,6 +15,9 @@ public class chaser : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Color ogColor; //for FlashWhite() function
 
+    public bool active = false; //determines if enemy moves
+    public Collider2D enemyTrigger;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -26,6 +29,11 @@ public class chaser : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         ogColor = spriteRenderer.color;
         currentHP = maxHP;
+
+        if (enemyTrigger != null)
+        {
+             enemyTrigger.isTrigger = true;
+        }
     }
 
 
@@ -40,11 +48,22 @@ public class chaser : MonoBehaviour
             //rb.rotation = angle;
         }
     }
+
     private void FixedUpdate()
     {
-        if (target)
+        if (target && active)
+        { rb.velocity = new Vector2(moveDirection.x, moveDirection.y) * moveSpeed; }
+        else 
+        { rb.velocity = Vector2.zero; }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        //Debug.Log("Trigger touched");
+        if (!active && enemyTrigger != null && other.gameObject.tag == "Player")
         {
-            rb.velocity = new Vector2(moveDirection.x, moveDirection.y) * moveSpeed;
+            active = true;
+            Debug.Log(gameObject.name + " activated by trigger!");
         }
     }
 
