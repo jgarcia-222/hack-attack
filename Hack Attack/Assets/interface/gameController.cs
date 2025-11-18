@@ -14,12 +14,13 @@ public class gameController : MonoBehaviour
 
     public GameObject gameOverScreen;
     public GameObject LevelClearText;
+
     private void Start()
     {
         token.ResetEvents();
         if(playerController!=null)
         { playerController.OnPlayerDie += GameOverScreen; }
-        if(gameOverScreen.gameObject.activeSelf)
+        if (gameOverScreen.gameObject.activeSelf)
         { gameOverScreen.gameObject.SetActive(false); }
         if (LevelClearText.gameObject.activeSelf)
         { LevelClearText.gameObject.SetActive(false); }
