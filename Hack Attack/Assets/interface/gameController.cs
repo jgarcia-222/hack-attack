@@ -35,11 +35,12 @@ public class gameController : MonoBehaviour
     {
         progress += amount;
         progressSlider.value = progress;
-        Debug.Log("gameController progress: " + progress);
+        //Debug.Log("gameController progress: " + progress);
         if (progress >= 100)
         {
+            sfxManager.Play("scoreMax");
             LevelClearText.SetActive(true); //finish level text
-            Debug.Log("Hack Complete");
+            //Debug.Log("Hack Complete");
         }
     }
 

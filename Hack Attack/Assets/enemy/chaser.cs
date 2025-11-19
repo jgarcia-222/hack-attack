@@ -70,9 +70,13 @@ public class chaser : MonoBehaviour
     public void TakeDamage(int damage) //reduce HP when shot
     {
         currentHP -= damage;
+        sfxManager.Play("hitEnemy");
         StartCoroutine(FlashWhite());
         if (currentHP <= 0) //kill unit
-        { Destroy(gameObject); }
+        {
+            sfxManager.Play("deathEnemy");
+            Destroy(gameObject); 
+        }
     }
 
     private IEnumerator FlashWhite()

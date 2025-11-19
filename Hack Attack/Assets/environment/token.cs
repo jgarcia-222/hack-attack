@@ -10,6 +10,7 @@ public class token : MonoBehaviour, items
     public void Collect()
     {
         OnTokenCollect?.Invoke(value);
+        sfxManager.Play("token");
         Destroy(gameObject);
     }
     public static void ResetEvents()

@@ -9,6 +9,7 @@ public class trigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            sfxManager.Play("wakeUp"); 
             foreach (chaser x in enemy)
             { x.active = true; }
             gameObject.SetActive(false);

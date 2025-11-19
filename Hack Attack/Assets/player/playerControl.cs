@@ -35,7 +35,7 @@ public class playerControl : MonoBehaviour
         chaser enemy = collision.GetComponent<chaser>();
         if (enemy)
         {
-            //kill player and run Game Over screen
+            sfxManager.Play("deathPlayer");
             OnPlayerDie.Invoke();
         }
     }
