@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class bullet : MonoBehaviour
 {
@@ -8,10 +9,13 @@ public class bullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         chaser enemy = collision.GetComponent<chaser>();
+        TilemapCollider2D wall = collision.GetComponent<TilemapCollider2D>();
         if (enemy)
         {
             enemy.TakeDamage(damage);
-            Destroy(gameObject); 
+            Destroy(gameObject);
         }
+        else if(wall)
+        { Destroy(gameObject); }
     }
 }

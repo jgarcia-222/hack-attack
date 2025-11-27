@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using static Cinemachine.DocumentationSortingAttribute;
 
 public class levelSelect : MonoBehaviour
 {
@@ -17,16 +19,8 @@ public class levelSelect : MonoBehaviour
             { levelButtons[i].interactable = false; }
         }
     }
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.BackQuote))
-        {
-            PlayerPrefs.DeleteAll();
-        }
-    }
     
-    //sends user to title screen
-    public void OnClickBack()
+    public void OnClickBack() //sends user to title screen
     {
         SceneManager.LoadScene("title");
     }

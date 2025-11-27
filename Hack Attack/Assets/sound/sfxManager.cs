@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class sfxManager : MonoBehaviour
@@ -10,7 +11,6 @@ public class sfxManager : MonoBehaviour
 
     private static AudioSource audioSource;
     private static sfxLibrary sfxLibrary;
-    [SerializeField] private Slider sfxSlider;
     private void Awake()
     {
         if (Instance == null)
@@ -18,7 +18,9 @@ public class sfxManager : MonoBehaviour
             Instance = this;
             audioSource = GetComponent<AudioSource>();
             sfxLibrary = GetComponent<sfxLibrary>();
+
             DontDestroyOnLoad(gameObject);
+            audioSource.volume = PlayerPrefs.GetFloat("sfxVolume", 1f);
         }
         else
         {
@@ -34,18 +36,10 @@ public class sfxManager : MonoBehaviour
             audioSource.PlayOneShot(audioClip);
         }
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        sfxSlider.onValueChanged.AddListener(delegate { OnValueChanged(); });
-    }
 
     public static void SetVolume(float volume)
     {
         audioSource.volume = volume;
-    }
-    public void OnValueChanged()
-    {
-        SetVolume(sfxSlider.value);
+        PlayerPrefs.SetFloat("sfxVolume", volume);
     }
 }

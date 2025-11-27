@@ -31,38 +31,34 @@ public class NextLevel : MonoBehaviour
 
         if (other.gameObject.tag == "Player" && score>=100)
         {
-            
             if (SceneManager.GetActiveScene().buildIndex == 9)
             {
                 Debug.Log("You win!");
                 SceneManager.LoadScene("title"); //implement a win screen
+                PlayerPrefs.SetInt("levelAt", 10);
             }
             else
             {
                 LevelClearScreen();
-                /*SceneManager.LoadScene(nextSceneLoad); //go to next level
-                if (nextSceneLoad > PlayerPrefs.GetInt("levelAt"))//sets int for Index
-                {
-                    PlayerPrefs.SetInt("levelAt", nextSceneLoad);
-                }*/
             }
         }
     }
 
     public void LevelClearScreen()
     {
+        if (nextSceneLoad > PlayerPrefs.GetInt("levelAt"))//sets int for Index
+        {
+            PlayerPrefs.SetInt("levelAt", nextSceneLoad);
+        }
         levelClearScreen.SetActive(true);
         Time.timeScale = 0;
     }
 
     public void GoToNextLevel()
     {
+        gameController.firstTry = true;
         levelClearScreen.SetActive(false);
         SceneManager.LoadScene(nextSceneLoad); //go to next level
-        if (nextSceneLoad > PlayerPrefs.GetInt("levelAt"))//sets int for Index
-        {
-            PlayerPrefs.SetInt("levelAt", nextSceneLoad);
-        }
         Time.timeScale = 1;
     }
 

@@ -14,6 +14,8 @@ public class gameController : MonoBehaviour
 
     public GameObject gameOverScreen;
     public GameObject LevelClearText;
+    public GameObject introScreen;
+    public static bool firstTry = true;
 
     private void Start()
     {
@@ -24,23 +26,45 @@ public class gameController : MonoBehaviour
         { gameOverScreen.gameObject.SetActive(false); }
         if (LevelClearText.gameObject.activeSelf)
         { LevelClearText.gameObject.SetActive(false); }
+        if (introScreen.gameObject.activeSelf)
+        { introScreen.gameObject.SetActive(false); }
 
 
         progress = 0;
         progressSlider.value = 0;
         token.OnTokenCollect += IncreaseProgress;
+
+        if (SceneManager.GetActiveScene().buildIndex == PlayerPrefs.GetInt("levelAt"))
+        {
+            if (firstTry)
+            {
+                Intro();
+            }
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            QuitGame();
+        }
+        
+        if (introScreen.gameObject.activeSelf && Input.anyKeyDown)
+        {
+            introScreen.SetActive(false);
+            Time.timeScale = 1;
+        }
     }
 
     void IncreaseProgress(int amount) //handles level progress incrementation
     {
         progress += amount;
         progressSlider.value = progress;
-        //Debug.Log("gameController progress: " + progress);
         if (progress >= 100)
         {
             sfxManager.Play("scoreMax");
             LevelClearText.SetActive(true); //finish level text
-            //Debug.Log("Hack Complete");
         }
     }
 
@@ -52,8 +76,15 @@ public class gameController : MonoBehaviour
         { playerController.OnPlayerDie -= GameOverScreen; }
     }
 
+    public void Intro()
+    {
+        Time.timeScale = 0;
+        introScreen.SetActive(true);
+    }
+
     void GameOverScreen()
     {
+        firstTry = false;
         gameOverScreen.SetActive(true);
         if (playerController != null)
         {
@@ -69,6 +100,7 @@ public class gameController : MonoBehaviour
     }
     public void QuitGame()
     {
+        firstTry = true; 
         SceneManager.LoadScene("levelSelect");
         Time.timeScale = 1;
     }

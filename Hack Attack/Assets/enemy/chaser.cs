@@ -55,6 +55,7 @@ public class chaser : MonoBehaviour
         { rb.velocity = new Vector2(moveDirection.x, moveDirection.y) * moveSpeed; }
         else 
         { rb.velocity = Vector2.zero; }
+        spriteRenderer.flipX = rb.velocity.x < 0.1f;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -63,7 +64,7 @@ public class chaser : MonoBehaviour
         if (!active && enemyTrigger != null && other.gameObject.tag == "Player")
         {
             active = true;
-            Debug.Log(gameObject.name + " activated by trigger!");
+            //Debug.Log(gameObject.name + " activated by trigger!");
         }
     }
 
@@ -71,7 +72,7 @@ public class chaser : MonoBehaviour
     {
         currentHP -= damage;
         sfxManager.Play("hitEnemy");
-        StartCoroutine(FlashWhite());
+        StartCoroutine(FlashOnHit());
         if (currentHP <= 0) //kill unit
         {
             sfxManager.Play("deathEnemy");
@@ -79,9 +80,9 @@ public class chaser : MonoBehaviour
         }
     }
 
-    private IEnumerator FlashWhite()
+    private IEnumerator FlashOnHit()
     {
-        spriteRenderer.color = Color.white;
+        spriteRenderer.color = Color.red;
         yield return new WaitForSeconds(0.1f);
         spriteRenderer.color = ogColor;
     }
