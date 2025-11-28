@@ -1181,7 +1181,7 @@ MonoBehaviour:
     ports and systems for an entry point...
 
 
-    Press any button to continue.'
+    Press space to continue.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 021ad8e07ac0a484fae6e64ec72cb392, type: 2}
   m_sharedMaterial: {fileID: -8368299704463851552, guid: 021ad8e07ac0a484fae6e64ec72cb392, type: 2}
@@ -15345,6 +15345,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3838425723111541888, guid: 25179091a7559334d93a63c39b084631, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1600
+      objectReference: {fileID: 0}
     - target: {fileID: 3858791888662171826, guid: 25179091a7559334d93a63c39b084631, type: 3}
       propertyPath: m_Name
       value: UI
@@ -15481,6 +15485,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9216777018181889826, guid: 25179091a7559334d93a63c39b084631, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1600
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -15578,7 +15586,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1.999939, y: 0.000015258789}
-  m_SizeDelta: {x: 2000, y: 800}
+  m_SizeDelta: {x: 2000, y: 1600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1551487595
 MonoBehaviour:

@@ -739,7 +739,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 2, y: 0}
-  m_SizeDelta: {x: 2000, y: 800}
+  m_SizeDelta: {x: 2000, y: 1600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &418221071
 MonoBehaviour:
@@ -21868,7 +21868,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "The attack begins with a period of quiet study called 'Reconnaissance'.
     \nAttackers scan IP ranges and search for exposed systems and services to learn
-    as much as possible while avoiding detection.\n\nPress any button to continue."
+    as much as possible while avoiding detection.\n\nPress space to continue."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 021ad8e07ac0a484fae6e64ec72cb392, type: 2}
   m_sharedMaterial: {fileID: -8368299704463851552, guid: 021ad8e07ac0a484fae6e64ec72cb392, type: 2}
@@ -22205,7 +22205,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2004101008388929250, guid: b61e83bf6f975ec4494bf6c570e5cb7e, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 800
+      value: 1600
       objectReference: {fileID: 0}
     - target: {fileID: 2464769909559952708, guid: b61e83bf6f975ec4494bf6c570e5cb7e, type: 3}
       propertyPath: m_AnchorMax.y
@@ -22217,7 +22217,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3537614989335885013, guid: b61e83bf6f975ec4494bf6c570e5cb7e, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 800
+      value: 1600
       objectReference: {fileID: 0}
     - target: {fileID: 4289019377752065948, guid: b61e83bf6f975ec4494bf6c570e5cb7e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

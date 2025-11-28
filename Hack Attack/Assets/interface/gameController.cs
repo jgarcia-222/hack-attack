@@ -50,7 +50,7 @@ public class gameController : MonoBehaviour
             QuitGame();
         }
         
-        if (introScreen.gameObject.activeSelf && Input.anyKeyDown)
+        if (introScreen.gameObject.activeSelf && Input.GetKeyDown(KeyCode.Space))
         {
             introScreen.SetActive(false);
             Time.timeScale = 1;
