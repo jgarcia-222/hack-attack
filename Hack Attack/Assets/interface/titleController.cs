@@ -8,6 +8,7 @@ public class titleController : MonoBehaviour
 {
     public Button buttonLogs;
     public GameObject winScreen;
+    public GameObject creditScreen;
     public static bool winScreenSeen = false;
     private void Start()
     {
@@ -35,6 +36,11 @@ public class titleController : MonoBehaviour
             winScreen.SetActive(false);
             Time.timeScale = 1;
         }
+        if (creditScreen.gameObject.activeSelf && Input.anyKeyDown)
+        {
+            creditScreen.SetActive(false);
+            Time.timeScale = 1;
+        }
     }
 
 
@@ -46,7 +52,14 @@ public class titleController : MonoBehaviour
     {
         PlayerPrefs.SetInt("levelAt", 2);
     }
-
+    public void OnClickCredits()
+    {
+        if (winScreen.gameObject.activeSelf == false && creditScreen.gameObject.activeSelf == false)
+        {
+            creditScreen.SetActive(true);
+            Time.timeScale = 0;
+        }
+    }
     public void OnClickLogs()
     {
         SceneManager.LoadScene("hackLogs");
